@@ -1,0 +1,12 @@
+{
+  "modelVersion": "6.26.8",
+  "name": "tvbox_entry",
+  "version": "1.0.0",
+  "description": "TVBox 鸿蒙版 entry 模块",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "libentry.so": "file:./src/main/cpp/types/libentry"
+  }
+}
