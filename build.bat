@@ -13,7 +13,7 @@ set LOG=%REPO%build.log
 
 echo [1/5] 复制工程 %SRC% -^> %PROJ% > %LOG%
 if exist "%PROJ%" rmdir /s /q "%PROJ%"
-robocopy "%SRC%" "%PROJ%" /E /XD .hvigor .git build /NFL /NDL /NJH /NJS /NP >> %LOG% 2>&1
+robocopy "%SRC%" "%PROJ%" /E /XD .hvigor .git build .preview /R:2 /W:2 /MT:8 /NFL /NDL /NJH /NJS /NP >> %LOG% 2>&1
 
 echo [2/5] 覆盖 spike 文件 >> %LOG%
 if not exist "%PROJ%\entry\src\main\cpp" mkdir "%PROJ%\entry\src\main\cpp"
