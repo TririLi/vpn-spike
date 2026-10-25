@@ -44,9 +44,14 @@ echo [5/6] 启动 >> %LOG%
 "%HDC%" shell aa start -a EntryAbility -b com.ohos.tvbox >> %LOG% 2>&1
 
 echo [6/6] 还原原始文件 >> %LOG%
+if /I "%1"=="/keep" (
+  echo 检测到 /keep，跳过还原（IDE 里可直接打开该工程看到测试页） >> %LOG%
+  goto skiprestore
+)
 copy /Y "%BAK%\Index.ets" "%PROJ%\entry\src\main\ets\pages\Index.ets" >> %LOG% 2>&1
 copy /Y "%BAK%\build-profile.json5" "%PROJ%\entry\build-profile.json5" >> %LOG% 2>&1
 copy /Y "%BAK%\oh-package.json5" "%PROJ%\entry\oh-package.json5" >> %LOG% 2>&1
+:skiprestore
 
 echo ==== done %TIME% ==== >> %LOG%
 type "%LOG%" | findstr /C:"BUILD SUCCESSFUL" /C:"BUILD FAILED" /C:"Error Message" /C:"error:" /C:"install bundle" /C:"start ability" /C:"done"
